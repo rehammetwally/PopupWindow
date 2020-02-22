@@ -1,6 +1,7 @@
 package com.rehammetwally.popupwindow;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,7 +17,7 @@ import android.widget.PopupWindow;
 public class MainActivity extends AppCompatActivity {
     private Button showPopupWindow;
     private PopupWindow popupWindow;
-    private LinearLayout linearLayout;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         showPopupWindow = findViewById(R.id.showPopupWindow);
-        linearLayout = findViewById(R.id.linearLayout);
+        constraintLayout = findViewById(R.id.constraintLayout);
         showPopupWindow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
                 View popupView = layoutInflater.inflate(R.layout.popup_window, null);
                 popupWindow = new PopupWindow(popupView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                popupWindow.showAtLocation(showPopupWindow, Gravity.CENTER,0,0);
+                popupWindow.showAtLocation(constraintLayout, Gravity.CENTER,0,0);
 
                 showPopupWindow.setVisibility(View.GONE);
 
